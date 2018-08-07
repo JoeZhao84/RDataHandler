@@ -1,4 +1,7 @@
 
+setwd("C:/Work/DestSelect/ECDB/")
+
+library("Rmpfr")
 library(dplyr)
 files <- list.files("C:/Work/DestSelect/ECDB/", pattern="*.RData")
  
@@ -9,6 +12,7 @@ for (i in 1:length(files)) {
    my.list[[i]] <- get("parent")
    }
 
-my.rbind <- do.call(rbind,my.list)
+#write.csv(my.rbind, "C:/Work/DestSelect/ECDB/CSV/test1.csv")		#csv/excel only allows 15 sigificant figures, which is a probelm for "orderIdInstinet" column
+write.table(my.rbind, file = "C:/Work/DestSelect/ECDB/CSV/test2.txt", sep = "\t")
 
-write.csv(my.rbind, "C:/Work/DestSelect/ECDB/CSV/test1.csv")
+
